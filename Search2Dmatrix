@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool search(vector<int>&mat, int x){
+    int low = 0;
+    int high = mat.size()-1;
+    int mid;
+    while (low<=high)
+    {
+        mid = low + (high-low)/2;
+        if(mat[mid]==x){
+            return true;
+        }
+        else if(mat[mid]<x){
+            low = mid+1;
+        }
+        else{
+            high = mid-1;
+        }
+    }
+    return false;
+    
+}
+bool searchX(vector<vector<int>>&mat, int x){
+    int row = -1;
+    int low = 0;
+    int high = mat.size()- 1;
+    int mid;
+    while(low<=high){
+        mid = low+(high-low)/2;
+        if(mat[mid][0]==x){
+            return true;
+        }
+        else if(mat[mid][0]<x){
+            low = mid+1;
+            row = mid;
+        }
+        else{
+            high = mid -1;
+        }
+    }
+    if(row==-1){
+        return false;
+    }
+    return search(mat[row],x);
+}
+
+int main(){
+    vector<vector<int>> mat = {{1,5,9},{14,20,21},{30,34,43}};
+    int x = 21;
+    if(searchX(mat, x)){
+        cout<<"True";
+    }
+    else{
+        cout<<"False";
+    }
+    return 0;
+}
