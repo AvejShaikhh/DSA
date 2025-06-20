@@ -6,10 +6,10 @@ bool anagram(string num1, string num2){
     unordered_map<char, int>m2;
 
     for(int i=0;i<num1.size();i++){
-        m1[i]++;
+        m1[num1[i]]++;
     }
      for(int i=0;i<num2.size();i++){
-        m2[i]++;
+        m2[num2[i]]++;
     }
     return m1==m2;
 }
